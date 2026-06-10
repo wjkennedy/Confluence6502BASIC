@@ -2,7 +2,9 @@
 
 This is a straight port of "Micro-Soft" BASIC for 6502, straight from Microsoft: https://github.com/microsoft/BASIC-M6502
 
-![6502BASIC.mp4](6502BASIC.mp4)
+![6502BASIC.png](6502BASIC.png)
+
+![6502BASIC.gif](6502BASIC.gif)
 
 ## Confluence Macro and Runner App
 
