@@ -1,5 +1,69 @@
 # Microsoft BASIC for 6502 Microprocessor - Version 1.1
 
+## Confluence Macro and Runner App
+
+This repository now includes an Atlassian Forge app for working with
+line-numbered 6502 BASIC in Confluence. The macro formats BASIC source in a page
+and prepares it for execution. The Confluence global page is the full BASIC
+runner app with the terminal, runtime, and prepared-program loader.
+
+### Architecture
+
+- Interaction model: UI-driven.
+- Product surfaces: Confluence macro and Confluence global page.
+- UI technology: Custom UI. The macro needs browser-side formatting and the
+  runner needs terminal-style interaction.
+- Identity model: resolver APIs enforce module boundaries. The macro can prepare
+  programs; the runner can load prepared programs. Atlassian product APIs are not
+  called directly from the frontend.
+- Data model: Forge KVS stores prepared programs under the app installation and
+  tracks the latest prepared program per account.
+- Scopes: `storage:app` only. No Confluence read/write scopes are declared.
+
+### Local Development
+
+```bash
+npm install
+npm run build:frontend
+npm test
+forge register
+forge deploy
+forge install
+```
+
+`forge register` will prompt for a Developer Space and may require accepting the
+Atlassian Developer Terms and billing notice for that space. Complete that step
+locally so Forge can write the registered `app.id` into `manifest.yml`.
+
+For production deployment:
+
+```bash
+./deploy-production.sh
+```
+
+Use `forge install list` to inspect existing installations before installing or
+upgrading the app on a site.
+
+### Macro
+
+The macro formats BASIC code, validates that executable lines are numbered, and
+stores a prepared payload for the runner. It then opens the `BASIC M6502 Runner`
+global page.
+
+### Runner App
+
+The runner app loads the latest prepared program for the current user and
+supports line-numbered BASIC programs and immediate commands:
+
+- `RUN`, `LIST`, `NEW`, `CLEAR`, `HELP`
+- `PRINT`, `LET`, `INPUT`
+- `IF ... THEN`, `GOTO`
+- `FOR ... TO ... STEP`, `NEXT`
+- `REM`, `END`, `STOP`
+
+The browser runtime is intentionally isolated from Atlassian APIs. Persistence
+and permission checks stay in backend resolvers.
+
 ## Historical Significance
 
 This assembly language source code represents one of the most historically significant pieces of software from the early personal computer era. It is the complete source code for **Microsoft BASIC Version 1.1 for the 6502 microprocessor**, originally developed and copyrighted by Microsoft in 1976-1978.
@@ -134,3 +198,4 @@ This source code represents the foundation upon which the modern software indust
 ---
 
 *This document represents a crucial piece of computing history - the source code that helped launch the personal computer revolution and established Microsoft as a software industry leader.*
+# Confluence6502BASIC
