@@ -1,8 +1,12 @@
 # Microsoft BASIC for 6502 Microprocessor - Version 1.1
 
+This is a straight port of "Micro-Soft" BASIC for 6502, straight from Microsoft: https://github.com/microsoft/BASIC-M6502
+
+![6502BASIC.mp4](6502BASIC.mp4)
+
 ## Confluence Macro and Runner App
 
-This repository now includes an Atlassian Forge app for working with
+This repository includes an Atlassian Forge app for working with
 line-numbered 6502 BASIC in Confluence. The macro formats BASIC source in a page
 and prepares it for execution. The Confluence global page is the full BASIC
 runner app with the terminal, runtime, and prepared-program loader.
@@ -196,7 +200,3 @@ This source code represents the foundation upon which the modern software indust
 - **Assembly Format**: Compatible with period assemblers for 6502 development
 
 ---
-
-*This document represents a crucial piece of computing history - the source code that helped launch the personal computer revolution and established Microsoft as a software industry leader.*
-# Confluence6502BASIC
-# Confluence6502BASIC
