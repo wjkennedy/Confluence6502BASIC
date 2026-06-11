@@ -1,0 +1,140 @@
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --panel: #f7f8f9;
+  --text: #172b4d;
+  --muted: #44546f;
+  --line: #dfe1e6;
+  --accent: #0c66e4;
+  --code: #101418;
+  --code-text: #b9f7c8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  min-height: 36px;
+  padding: 6px 12px;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.macro-shell {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+}
+
+.macro-header {
+  align-items: start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+p,
+.status,
+.field span,
+.summary span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.field {
+  display: grid;
+  gap: 5px;
+}
+
+input,
+textarea {
+  border: 1px solid #8590a2;
+  border-radius: 6px;
+  color: var(--text);
+  padding: 8px 10px;
+  width: 100%;
+}
+
+textarea {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  min-height: 132px;
+  resize: vertical;
+}
+
+.summary {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.summary div {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.summary strong,
+.summary span {
+  display: block;
+}
+
+.formatted-output {
+  background: var(--code);
+  border-radius: 8px;
+  color: var(--code-text);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 0;
+  max-height: 260px;
+  overflow: auto;
+  padding: 12px;
+  white-space: pre-wrap;
+}
+
+.status {
+  min-height: 20px;
+}
+
+@media (max-width: 640px) {
+  .macro-header {
+    display: grid;
+  }
+
+  .summary {
+    grid-template-columns: 1fr;
+  }
+}

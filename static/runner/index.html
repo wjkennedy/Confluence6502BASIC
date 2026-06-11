@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BASIC M6502 Runner</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="terminal-panel" aria-label="6502 BASIC terminal">
+        <div class="terminal-toolbar">
+          <div>
+            <h1>BASIC M6502 Runner</h1>
+            <p id="loadedProgram">Load a prepared macro program or run ELIZA.</p>
+          </div>
+          <div class="toolbar-actions">
+            <label class="control" for="paletteSelect">
+              <span>Palette</span>
+              <select id="paletteSelect">
+                <option value="c64">C64</option>
+                <option value="bw">B&W</option>
+                <option value="atari">Atari</option>
+              </select>
+            </label>
+            <label class="control control-range" for="fontSizeRange">
+              <span>Font</span>
+              <input id="fontSizeRange" type="range" min="12" max="24" step="1" value="15">
+              <output id="fontSizeValue" for="fontSizeRange">15px</output>
+            </label>
+            <button id="loadPrepared" type="button">Load prepared</button>
+            <label class="control" for="pageSpaceKey">
+              <span>Space key</span>
+              <input id="pageSpaceKey" type="text" placeholder="BASIC">
+            </label>
+            <button id="createGamesPage" type="button">Create games page</button>
+            <button id="runDemo" type="button">Run ELIZA</button>
+            <button id="resetRuntime" type="button">Reset</button>
+          </div>
+        </div>
+        <div id="createGamesPageStatus" class="page-status" aria-live="polite"></div>
+        <div id="screen" class="screen" role="textbox" aria-label="BASIC terminal" tabindex="0"></div>
+      </section>
+    </main>
+    <script src="./runner.bundle.js"></script>
+  </body>
+</html>

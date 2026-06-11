@@ -1,0 +1,22 @@
+{
+  "name": "basic-m6502-confluence-macro",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Atlassian Forge Confluence app and macro for preparing and running 6502-era BASIC.",
+  "main": "src/index.js",
+  "scripts": {
+    "build:frontend": "node scripts/generate-games-stub-page.mjs && cp ELIZA.BAS static/runner/ELIZA.BAS && esbuild src/frontend/macro.js --bundle --format=iife --outfile=static/macro/macro.bundle.js && esbuild src/frontend/runner.js --bundle --format=iife --outfile=static/runner/runner.bundle.js",
+    "generate:games-page": "node scripts/generate-games-stub-page.mjs",
+    "test": "node --test tests/*.test.js",
+    "lint": "node --check src/index.js && node --check src/basic-program.js && node --check tests/*.test.js",
+    "forge:deploy": "forge deploy",
+    "forge:install:list": "forge install list",
+    "forge:register": "forge register"
+  },
+  "dependencies": {
+    "@forge/bridge": "^5.16.2",
+    "@forge/kvs": "^1.6.4",
+    "@forge/resolver": "^1.6.11",
+    "esbuild": "^0.28.0"
+  }
+}

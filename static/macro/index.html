@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Microsoft 6502 BASIC Macro</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="macro-shell">
+      <header class="macro-header">
+        <div>
+          <h1>Microsoft 6502 BASIC</h1>
+          <p>Format BASIC code here, then prepare it for the runner app.</p>
+        </div>
+        <button id="prepareButton" type="button">Prepare for runner</button>
+      </header>
+
+      <label class="field">
+        <span>Program title</span>
+        <input id="programTitle" placeholder="Program title">
+      </label>
+
+      <label class="field">
+        <span>BASIC source</span>
+        <textarea id="basicSource" spellcheck="false">10 PRINT "MICROSOFT 6502 BASIC"
+20 FOR I = 1 TO 5
+30 PRINT I, I * I
+40 NEXT I
+50 END</textarea>
+      </label>
+
+      <section class="summary" aria-live="polite">
+        <div><strong id="lineCount">0</strong><span>lines</span></div>
+        <div><strong id="lineRange">-</strong><span>range</span></div>
+        <div><strong id="commandCount">0</strong><span>commands</span></div>
+      </section>
+
+      <pre id="formattedOutput" class="formatted-output"></pre>
+      <div id="status" class="status">Waiting for BASIC source.</div>
+    </main>
+    <script src="./macro.bundle.js"></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+app:
+  runtime:
+    name: nodejs22.x
+  id: ari:cloud:ecosystem::app/56be77c8-a94a-4580-a686-76856c812c75
+
+modules:
+  macro:
+    - key: basic-m6502-macro
+      resource: basic-m6502-macro-ui
+      resolver:
+        function: resolver
+      title: Microsoft 6502 BASIC
+      description: Format 6502 BASIC code and prepare it for the BASIC runner app.
+      viewportSize: medium
+      categories:
+        - development
+  confluence:globalPage:
+    - key: basic-m6502-runner-page
+      resource: basic-m6502-runner-ui
+      resolver:
+        function: resolver
+      title: BASIC M6502 Runner
+      route: basic-m6502-runner
+  function:
+    - key: resolver
+      handler: index.handler
+
+resources:
+  - key: basic-m6502-macro-ui
+    path: static/macro
+  - key: basic-m6502-runner-ui
+    path: static/runner
+
+permissions:
+  content:
+    styles:
+      - unsafe-inline
+  scopes:
+    - storage:app
+    - read:space:confluence
+    - write:page:confluence

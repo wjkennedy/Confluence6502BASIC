@@ -1,0 +1,265 @@
+:root {
+  color-scheme: light;
+  --bg: #3d47a6;
+  --panel: #1f2f8f;
+  --text: #9fd4ff;
+  --muted: #6b8ec7;
+  --line: #5d6bc6;
+  --accent: #9fd4ff;
+  --terminal: #1d2e91;
+  --terminal-text: #9fd4ff;
+  --terminal-cursor: #9fd4ff;
+  --toolbar-bg: rgba(9, 15, 62, 0.38);
+  --control-bg: rgba(8, 12, 52, 0.58);
+  --control-text: #c7e8ff;
+  --terminal-font-size: 15px;
+  --terminal-line-height: 1.5;
+}
+
+[data-palette="bw"] {
+  color-scheme: light;
+  --bg: #f3f3f1;
+  --panel: #ffffff;
+  --text: #101010;
+  --muted: #5b5b5b;
+  --line: #bcbcbc;
+  --accent: #1f1f1f;
+  --terminal: #ffffff;
+  --terminal-text: #111111;
+  --terminal-cursor: #111111;
+  --toolbar-bg: rgba(255, 255, 255, 0.82);
+  --control-bg: rgba(255, 255, 255, 0.92);
+  --control-text: #111111;
+}
+
+[data-palette="atari"] {
+  color-scheme: dark;
+  --bg: #11103a;
+  --panel: #1f1858;
+  --text: #fff5c3;
+  --muted: #91c9ff;
+  --line: #3f5cff;
+  --accent: #ffdd57;
+  --terminal: linear-gradient(180deg, #2d1f82 0%, #0f1247 100%);
+  --terminal-text: #fdf4ae;
+  --terminal-cursor: #ffdd57;
+  --toolbar-bg: rgba(13, 17, 72, 0.56);
+  --control-bg: rgba(12, 16, 58, 0.72);
+  --control-text: #fff5c3;
+}
+
+[data-palette="c64"] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+button,
+input,
+select,
+output {
+  font: inherit;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--control-bg);
+  color: var(--control-text);
+  cursor: pointer;
+  min-height: 36px;
+  padding: 6px 12px;
+}
+
+input {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--control-bg);
+  color: var(--control-text);
+  min-height: 36px;
+  padding: 7px 10px;
+}
+
+button:hover,
+button:focus-visible {
+  border-color: var(--accent);
+  outline: 2px solid transparent;
+}
+
+.app-shell {
+  min-height: 620px;
+  padding: 16px;
+}
+
+.terminal-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-width: 0;
+}
+
+.terminal-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.terminal-toolbar {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 12px 14px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+.control {
+  align-items: start;
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+  min-width: 126px;
+}
+
+.control span {
+  color: var(--muted);
+}
+
+.control select,
+.control-range {
+  min-height: 36px;
+}
+
+.control select {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--control-bg);
+  color: var(--control-text);
+  padding: 7px 10px;
+}
+
+.control input {
+  width: 100%;
+}
+
+.control-range {
+  min-width: 180px;
+}
+
+.control-range input[type="range"] {
+  accent-color: var(--accent);
+  width: 100%;
+}
+
+.control-range output {
+  color: var(--muted);
+  font-size: 12px;
+  justify-self: end;
+}
+
+.screen {
+  background: var(--terminal);
+  color: var(--terminal-text);
+  flex: 1;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: var(--terminal-font-size);
+  line-height: var(--terminal-line-height);
+  min-height: 420px;
+  overflow: auto;
+  padding: 16px;
+  white-space: pre-wrap;
+  text-shadow: 0 0 0.35px currentColor;
+}
+
+.screen::after {
+  content: "";
+  display: inline-block;
+  width: 0.62em;
+  height: 1em;
+  margin-left: 1px;
+  background: var(--terminal-cursor);
+  vertical-align: -0.12em;
+  animation: terminal-cursor-blink 1s steps(1, end) infinite;
+}
+
+.screen:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.page-status {
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  padding: 8px 14px;
+}
+
+@keyframes terminal-cursor-blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    padding: 10px;
+  }
+
+  .terminal-toolbar {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .toolbar-actions {
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .control,
+  .control-range {
+    min-width: 0;
+    width: 100%;
+  }
+}
